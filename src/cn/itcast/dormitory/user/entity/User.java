@@ -9,6 +9,27 @@ public class User {
     private String dormitory;//寝室号
     private String tel_number;//手机号
     private String classes;//班级
+    private String repass;
+    private String verifyCode;
+    private String newPass;
+	public String getNewPass() {
+		return newPass;
+	}
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+	public String getVerifyCode() {
+		return verifyCode;
+	}
+	public void setVerifyCode(String verifyCode) {
+		this.verifyCode = verifyCode;
+	}
+	public String getRepass() {
+		return repass;
+	}
+	public void setRepass(String repass) {
+		this.repass = repass;
+	}
 	public String getSid() {
 		return sid;
 	}
@@ -54,7 +75,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [sid=" + sid + ", name=" + name + ", password=" + password + ", email=" + email + ", dormitory="
-				+ dormitory + ", tel_number=" + tel_number + ", classes=" + classes + "]";
+				+ dormitory + ", tel_number=" + tel_number + ", classes=" + classes + ", repass=" + repass
+				+ ", verifyCode=" + verifyCode + ", newPass=" + newPass + "]";
 	}
 
 

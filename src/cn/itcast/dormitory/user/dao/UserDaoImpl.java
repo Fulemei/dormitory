@@ -129,4 +129,14 @@ public class UserDaoImpl implements UserDao{
 		return flag;
 	}
 
+	@Override
+	public boolean updatePassword(String sid, String newPass, String password) {
+		boolean flag = false;
+		int i = JdbcUtil.addUpdDel("update t_student set password='"+newPass+"where sid ='"+sid+"'");
+		if(i>0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

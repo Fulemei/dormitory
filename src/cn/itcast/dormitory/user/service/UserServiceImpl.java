@@ -49,4 +49,10 @@ public class UserServiceImpl implements UserService{
 		return ud.ajaxValidateNumber(tel_number);
 	}
 
+	@Override
+	public boolean updatePassword(String sid, String newPass, String password) {
+		return ud.updatePassword(sid, newPass, password);
+		
+	}
+
 }

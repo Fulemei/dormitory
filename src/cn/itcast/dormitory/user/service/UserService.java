@@ -13,4 +13,5 @@ public interface UserService {
 	public boolean ajaxValidateSid(String sid);//校验用户名是否注册
 	public boolean ajaxValidateEmail(String email);//校验邮箱是否注册
 	public boolean ajaxValidateNumber(String tel_number);//校验手机号是否已经被使用
+	public boolean updatePassword(String sid, String newPass, String password);
 }

@@ -139,13 +139,13 @@ public class CategoryDaoImpl implements CategoryDao{
 			if(category.getParent() != null) {
 				pid = category.getParent().getCid();
 			}
-			String sql = "update t_category set cname ='"
-				     +"' , cname ='"+category.getCname()
+			String sql = "update t_category set cname ='"+category.getCname()
 				     +"' , pid ='"+pid
 				     +"' , descr ='"+category.getDesc()+"' where cid = '"+category.getCid()+"'";
 			JdbcUtil.addUpdDel(sql);
 			JdbcUtil.freeAll();
 		}
+	
 	}
 
 

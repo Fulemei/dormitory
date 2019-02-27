@@ -9,6 +9,9 @@ import cn.itcast.dormitory.category.dao.CategoryDaoImpl;
 import cn.itcast.dormitory.category.entity.Category;
 import cn.itcast.dormitory.category.service.CategoryService;
 import cn.itcast.dormitory.category.service.CategoryServiceImpl;
+import cn.itcast.dormitory.order.dao.OrderDao;
+import cn.itcast.dormitory.order.dao.OrderDaoImpl;
+import cn.itcast.dormitory.order.entity.Order;
 import cn.itcast.dormitory.user.dao.UserDao;
 import cn.itcast.dormitory.user.dao.UserDaoImpl;
 import cn.itcast.dormitory.user.entity.User;
@@ -29,7 +32,9 @@ public class Test01 {
 //        CategoryService cs =new CategoryServiceImpl();
 //        cs.findAll();
 //        System.out.println(cs);
-       	WorkerDao wd = new WorkerDaoImpl();
+//      	WorkerDao wd = new WorkerDaoImpl();
+//      	wd.findWorkerCountByCategory("01");
+//      	System.out.println(wd.findWorkerCountByCategory("01"));
 //		Worker w = new Worker();
 //		w.setCid("01");
 //		w.setWemail("111111111111@163.com");
@@ -38,7 +43,22 @@ public class Test01 {
 //		w.setWid("201801");
 //		wd.add(w);
 //		System.out.println(wd.findAll());
-		System.out.println(wd.findByWid("201801"));
+//		System.out.println(wd.findByWid("201801"));
+		OrderDao oo = new OrderDaoImpl();
+//		oo.findStatus("3267000BD379443D91138A449732CBC0");
+////		System.out.println(oo.findStatus("3267000BD379443D91138A449732CBC0"));
+//		oo.updateStatus("3267000BD379443D91138A449732CBC0", 2);
+//		User user = new User();
+//		Order order = new Order();
+//		user.setSid("2015023301");
+//		order.setOwner(user);
+//		Category c = new Category();
+//		c.setCid("04");
+//		order.setCategory(c);
+//		order.setAddress("05611");
+//		order.setOrdermsg("洗衣机坏了");
+//		oo.add(order);
+		System.out.println(oo.load("5783F20FDE1B48ACA28531A4E0758D7A"));
 	}
 
 }

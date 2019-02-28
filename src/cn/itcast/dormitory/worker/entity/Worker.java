@@ -1,23 +1,25 @@
 package cn.itcast.dormitory.worker.entity;
 
+import cn.itcast.dormitory.category.entity.Category;
+
 public class Worker {
 	 private String wid;
      private String wname;
      private String wpassword;
-     private String cid;
+     private Category category;
      private String wemail;
      private String wnumber;
 	public String getWid() {
 		return wid;
 	}
-	public String getCid() {
-		return cid;
-	}
-	public void setCid(String cid) {
-		this.cid = cid;
-	}
 	public void setWid(String wid) {
 		this.wid = wid;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	public String getWname() {
 		return wname;
@@ -45,8 +47,8 @@ public class Worker {
 	}
 	@Override
 	public String toString() {
-		return "Worker [wid=" + wid + ", wname=" + wname + ", wpassword=" + wpassword + ",  cid="
-				+ cid + ", wemail=" + wemail + ", wnumber=" + wnumber + "]";
+		return "Worker [wid=" + wid + ", wname=" + wname + ", wpassword=" + wpassword + ", category=" + category
+				+ ", wemail=" + wemail + ", wnumber=" + wnumber + "]";
 	}
      
 }

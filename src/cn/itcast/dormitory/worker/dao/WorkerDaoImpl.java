@@ -29,7 +29,7 @@ public class WorkerDaoImpl implements WorkerDao{
 			     +"' , wpassword ='"+worker.getWpassword()
 			     +"' , wemail ='"+worker.getWemail()
 			     +"' , wnumber ='"+worker.getWnumber()
-			     +"' , cid ='"+worker.getCid()+"' where wid = '"+worker.getWid()+"'";
+			     +"' , cid ='"+worker.getCategory().getCid()+"' where wid = '"+worker.getWid()+"'";
 		JdbcUtil.addUpdDel(sql);
 		JdbcUtil.freeAll();
 	}
@@ -45,7 +45,7 @@ public class WorkerDaoImpl implements WorkerDao{
 			Worker worker = new Worker();
 			worker.setWid(wid);
 			worker.setWname(rs.getString("WNAME"));
-			worker.setCid(rs.getString("CID"));
+			worker.getCategory().setCid(rs.getString("CID"));
 			worker.setWpassword(rs.getString("WPASSWORD"));
 			worker.setWnumber(rs.getString("WNUMBER"));
 			worker.setWemail(rs.getString("WEMAIL"));
@@ -87,7 +87,7 @@ public class WorkerDaoImpl implements WorkerDao{
 			worker.setWid(rs.getString("WID"));
 			worker.setWname(rs.getString("WNAME"));
 			worker.setWpassword(rs.getString("wpassword"));
-			worker.setCid(rs.getString("CID"));
+			worker.getCategory().setCid(rs.getString("CID"));
 			worker.setWnumber(rs.getString("WNUMBER"));
 			worker.setWemail(rs.getString("WEMAIL"));
 			list.add(worker);
@@ -103,7 +103,7 @@ public class WorkerDaoImpl implements WorkerDao{
 			worker.setWid(rs.getString("WID"));
 			worker.setWname(rs.getString("WNAME"));
 			worker.setWpassword(rs.getString("wpassword"));
-			worker.setCid(rs.getString("CID"));
+			worker.getCategory().setCid(rs.getString("CID"));
 			worker.setWnumber(rs.getString("WNUMBER"));
 			worker.setWemail(rs.getString("WEMAIL"));
 			list.add(worker);
@@ -114,7 +114,7 @@ public class WorkerDaoImpl implements WorkerDao{
 	@Override
 	public void add(Worker worker) {
 		JdbcUtil.getConnection();
-		JdbcUtil.addUpdDel("insert into t_worker values('"+worker.getWid()+"','"+worker.getWname()+"','"+worker.getWpassword()+"','"+worker.getCid()+"','"+worker.getWemail()+"','"+worker.getWnumber()+"')");
+		JdbcUtil.addUpdDel("insert into t_worker values('"+worker.getWid()+"','"+worker.getWname()+"','"+worker.getWpassword()+"','"+worker.getCategory().getCid()+"','"+worker.getWemail()+"','"+worker.getWnumber()+"')");
 		JdbcUtil.freeAll();
 	}
 

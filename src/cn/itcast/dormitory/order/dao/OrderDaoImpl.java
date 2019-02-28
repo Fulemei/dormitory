@@ -91,7 +91,7 @@ public class OrderDaoImpl implements OrderDao{
 		 ResultSet rs = JdbcUtil.selectSql("select * from t_worker where cid = '"+c+"'");
 		 while(rs.next()) {
 			 Worker worker = new Worker();
-			 worker.setCid(cid);
+			 worker.getCategory().setCid(cid);
 			 worker.setWid(rs.getString("WID"));
 			 worker.setWnumber(rs.getString("WNUMBER"));
 			 worker.setWname(rs.getString("WNAME"));

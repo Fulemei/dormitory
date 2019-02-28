@@ -1,14 +1,14 @@
 package cn.itcast.dormitory.admin.admin.entity;
 
 public class Admin {
-	private String adminId;//主键
+	private String adminid;//主键
 	private String adminname;//管理员的登录名
-	private String adminpwd;//管理员的登录密码
-	public String getAdminId() {
-		return adminId;
+	private String password;//管理员的登录密码
+	public String getAdminid() {
+		return adminid;
 	}
-	public void setAdminId(String adminId) {
-		this.adminId = adminId;
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
 	}
 	public String getAdminname() {
 		return adminname;
@@ -16,15 +16,15 @@ public class Admin {
 	public void setAdminname(String adminname) {
 		this.adminname = adminname;
 	}
-	public String getAdminpwd() {
-		return adminpwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setAdminpwd(String adminpwd) {
-		this.adminpwd = adminpwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	@Override
 	public String toString() {
-		return "admin [adminId=" + adminId + ", adminname=" + adminname + ", adminpwd=" + adminpwd + "]";
+		return "Admin [adminid=" + adminid + ", adminname=" + adminname + ", password=" + password + "]";
 	}
 	
 }

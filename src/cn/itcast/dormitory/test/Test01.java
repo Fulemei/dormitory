@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.itcast.dormitory.admin.admin.dao.AdminDao;
 import cn.itcast.dormitory.category.dao.CategoryDao;
 import cn.itcast.dormitory.category.dao.CategoryDaoImpl;
 import cn.itcast.dormitory.category.entity.Category;
@@ -58,7 +59,10 @@ public class Test01 {
 //		order.setAddress("05611");
 //		order.setOrdermsg("洗衣机坏了");
 //		oo.add(order);
-		System.out.println(oo.load("5783F20FDE1B48ACA28531A4E0758D7A"));
+//		System.out.println(oo.load("5783F20FDE1B48ACA28531A4E0758D7A"));
+		AdminDao ad = new AdminDao();
+		ad.login("123", "88888888");
+		System.out.println(ad.login("123", "88888888"));
 	}
 
 }

@@ -184,4 +184,13 @@ public class AdminWorkerServlet extends BaseServlet{
 		req.setAttribute("pb", list);
 		return "f:/adminjsps/admin/book/list.jsp";
 	}
+	/**
+	 * 查看所有工人信息
+	 * @throws SQLException 
+	 */
+	public String findAll(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
+		List<Worker> list = ws.findAll();
+		req.setAttribute("pb", list);
+		return "f:/adminjsps/admin/book/list.jsp";
+	}
 }

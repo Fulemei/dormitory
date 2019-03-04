@@ -13,4 +13,5 @@ public interface CategoryDao {
 	public void edit(Category category);//编辑分类
 	public int findChildrenCountByParent(String pid) throws SQLException;//查看父分类下子类的数目
 	public void delete(String cid);//删除分类
+	public Category load(String cid) throws SQLException;
 }

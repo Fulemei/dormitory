@@ -1,6 +1,7 @@
 package cn.itcast.dormitory.admin.admin.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +22,10 @@ private AdminService adminService = new AdminService();
 	 * @return
 	 * @throws ServletException
 	 * @throws IOException
+	 * @throws SQLException 
 	 */
 	public String login(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 		/*
 		 * 1. 封装表单数据到Admin
 		 */

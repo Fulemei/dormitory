@@ -83,5 +83,14 @@ public class OrderServiceImpl implements OrderService {
 		}
 	}
 
+	@Override
+	public List<Order> findByDorimtory(String dor) {
+		try {
+			return od.findByDorimtory(dor);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+    
 	
 }

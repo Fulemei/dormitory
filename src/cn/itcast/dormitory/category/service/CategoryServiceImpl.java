@@ -46,5 +46,10 @@ public class CategoryServiceImpl implements CategoryService {
 		cd.delete(cid);
 	}
 
+	@Override
+	public Category load(String cid) throws SQLException {
+		return cd.load(cid);
+	}
+
 
 }

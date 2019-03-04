@@ -1,5 +1,6 @@
 package cn.itcast.dormitory.user.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import cn.itcast.dormitory.user.dao.UserDao;
@@ -29,9 +30,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean update(String sid, String name, String password, String email, String dormitory, String tel_number,
-			String classes) {
-		return ud.update(sid, name, password, email, dormitory, tel_number, classes);
+	public boolean update(User user) {
+		return ud.update(user);
 	}
 
 	@Override
@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService{
 	public boolean updatePassword(String sid, String newPass, String password) {
 		return ud.updatePassword(sid, newPass, password);
 		
+	}
+
+	@Override
+	public List<User> findBySid(String sid) throws SQLException {
+		return ud.findBySid(sid);
 	}
 
 }

@@ -17,9 +17,9 @@ public class UserDaoImpl implements UserDao{
 			JdbcUtil.getConnection();
 			ResultSet rs = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"' and password='"+password+"'");
 			while(rs.next()) {
-				if(rs.getString(sid).equals(sid)&&rs.getString(password).equals(password)) {
+				
 					flag = true;
-				}
+				
 			}
 			JdbcUtil.freeAll();
 		}catch(SQLException e) {
@@ -78,16 +78,15 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean update(String sid, String name, String password, String email, String dormitory, String tel_number,
-			String classes) {
+	public boolean update(User user) {
 		boolean flag = false;
 		JdbcUtil.getConnection();
-		String sql = "update t_student set name ='"+name
-				     +"' , password ='"+password
-				     +"' , emali ='"+email
-				     +"' , dormitory ='"+dormitory
-				     +"' , tel_number ='"+tel_number
-				     +"' , classes ='"+classes+"' where sid = '"+sid+"'";
+		String sql = "update t_student set name ='"+user.getName()
+				     +"' , password ='"+user.getPassword()
+				     +"' , emali ='"+user.getEmail()
+				     +"' , dormitory ='"+user.getDormitory()
+				     +"' , tel_number ='"+user.getTel_number()
+				     +"' , classes ='"+user.getClasses()+"' where sid = '"+user.getSid()+"'";
 		int i = JdbcUtil.addUpdDel(sql);
 		if(i>0) {
 			flag = true;
@@ -104,6 +103,7 @@ public class UserDaoImpl implements UserDao{
 		if(rs != null) {
 			flag = true;
 		}
+		JdbcUtil.freeAll();
 		return flag;
 	}
 
@@ -115,6 +115,7 @@ public class UserDaoImpl implements UserDao{
 		if(rs != null) {
 			flag = true;
 		}
+		JdbcUtil.freeAll();
 		return flag;
 	}
 
@@ -126,17 +127,39 @@ public class UserDaoImpl implements UserDao{
 		if(rs != null) {
 			flag = true;
 		}
+		JdbcUtil.freeAll();
 		return flag;
 	}
 
 	@Override
 	public boolean updatePassword(String sid, String newPass, String password) {
 		boolean flag = false;
+		JdbcUtil.getConnection();
 		int i = JdbcUtil.addUpdDel("update t_student set password='"+newPass+"where sid ='"+sid+"'");
 		if(i>0) {
 			flag = true;
 		}
+		JdbcUtil.freeAll();
 		return flag;
 	}
+	
+	public List<User> findBySid(String sid) throws SQLException{
+		JdbcUtil.getConnection();
+		List<User> list = new ArrayList<User>();
+		ResultSet rs = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+		while(rs.next()) {
+			
+			User user = new User();
+			user.setSid(sid);
+			user.setName(rs.getString("name"));
+			user.setDormitory(rs.getString("dormitory"));
+			user.setEmail(rs.getString("email"));
+			user.setTel_number(rs.getString("tel_number"));
+			user.setPassword(rs.getString("password"));
+			list.add(user);
+		}
+		JdbcUtil.freeAll();
+		return list;
+	} 
 
 }

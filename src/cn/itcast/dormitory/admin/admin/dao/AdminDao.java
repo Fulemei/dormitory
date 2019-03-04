@@ -9,13 +9,13 @@ public class AdminDao {
 	public boolean login(String adminid, String password) throws SQLException {
 		boolean flag = false;
 			JdbcUtil.getConnection();
-			ResultSet rs = JdbcUtil.selectSql("select * from t_admin where adminid='"+adminid+"'and password'"+password+"'");
+			ResultSet rs = JdbcUtil.selectSql("select * from t_admin where adminid='"+adminid+"'and password='"+password+"'");
 			while(rs.next()) {
-				if(rs.getString(adminid).equals(adminid)&&rs.getString(password).equals(password)) {
+				
 					flag = true;
-				}
-			JdbcUtil.freeAll();
+				
 			}
+			JdbcUtil.freeAll();
 			return flag;
 			}
 }

@@ -1,6 +1,5 @@
 package cn.itcast.dormitory.order.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import cn.itcast.dormitory.order.entity.Order;
@@ -14,4 +13,5 @@ public interface OrderService {
 	public List<Order> findAll() ;//查询所有订单 
 	public List<Order> findByWorker(String wid) ;//通过维修师傅查找订单
 	public List<Order> findByStatus(int status) ;//通过订单状态查询
+	public List<Order> findByDorimtory(String dor);
 }

@@ -2,7 +2,10 @@ package cn.itcast.dormitory.order.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.itcast.dormitory.category.entity.Category;
@@ -41,7 +44,16 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public void updateStatus(String oid, int status) {
 		JdbcUtil.getConnection();
-		JdbcUtil.addUpdDel("update t_order set status='"+status+"'where oid = '"+oid+"'");
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time=format.format(date);
+		System.out.println(time);
+		if(status==1) {
+			JdbcUtil.addUpdDel("update t_order set status='"+status+"', worktime='"+time+"'where oid = '"+oid+"'");
+		}
+		if(status==2) {
+			JdbcUtil.addUpdDel("update t_order set status='"+status+"', endtime='"+time+"'where oid = '"+oid+"'");
+		}
 		JdbcUtil.freeAll();
 	}
 
@@ -65,11 +77,30 @@ public class OrderDaoImpl implements OrderDao{
 			String sid = rs.getString("SID");
 			String wid = rs.getString("WID");
 			String cid = rs.getString("CID");
-			orderitem(sid,wid,cid);
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
 			order.setStatus(rs.getInt("STATUS")); 
 			order.setOrdertime(rs.getString("ORDERTIME"));
 			order.setAddress(rs.getString("ADDRESS"));
-			
 		}
 		JdbcUtil.freeAll();
 		return order;
@@ -123,7 +154,27 @@ public class OrderDaoImpl implements OrderDao{
 			Order order = new Order();
 			String wid = rs.getString("WID");
 			String cid = rs.getString("CID");
-			orderitem(sid,wid,cid);
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
 			order.setStatus(rs.getInt("STATUS")); 
 			order.setOrdertime(rs.getString("ORDERTIME"));
 			order.setAddress(rs.getString("ADDRESS"));
@@ -143,7 +194,27 @@ public class OrderDaoImpl implements OrderDao{
 			String sid = rs.getString("SID");
 			String wid = rs.getString("WID");
 			String cid = rs.getString("CID");
-			orderitem(sid,wid,cid);
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
 			order.setStatus(rs.getInt("STATUS")); 
 			order.setOrdertime(rs.getString("ORDERTIME"));
 			order.setAddress(rs.getString("ADDRESS"));
@@ -166,7 +237,27 @@ public class OrderDaoImpl implements OrderDao{
 			Order order = new Order();
 			String sid = rs.getString("SID");
 			String cid = rs.getString("CID");
-			orderitem(sid,wid,cid);
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
 			order.setStatus(rs.getInt("STATUS")); 
 			order.setOrdertime(rs.getString("ORDERTIME"));
 			order.setAddress(rs.getString("ADDRESS"));
@@ -189,7 +280,27 @@ public class OrderDaoImpl implements OrderDao{
 			String sid = rs.getString("SID");
 			String wid = rs.getString("WID");
 			String cid = rs.getString("CID");
-			orderitem(sid,wid,cid);
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
 			order.setStatus(rs.getInt("STATUS")); 
 			order.setOrdertime(rs.getString("ORDERTIME"));
 			order.setAddress(rs.getString("ADDRESS"));
@@ -198,33 +309,45 @@ public class OrderDaoImpl implements OrderDao{
 		JdbcUtil.freeAll();
 		return list;
 	}
-	/**
-	  * 订单明细
-	 */
-    public Order orderitem(String sid,String wid,String cid) throws SQLException{
 
-		Order order = new Order();
-		ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
-		while(rs2.next()) {
-			User u = new User();
-			u.setTel_number(rs2.getString("TEL_NUMBER"));
-			u.setName(rs2.getString("NAME"));
-			order.setOwner(u);
+	@Override
+	public List<Order> findByDorimtory(String dor) throws SQLException {
+		JdbcUtil.getConnection();
+		List<Order> list = new ArrayList<Order>();
+		ResultSet rs = JdbcUtil.selectSql("select * from t_order where address like '"+dor+"%'");
+		while(rs.next()) {
+			Order order = new Order();
+			String sid = rs.getString("SID");
+			String wid = rs.getString("WID");
+			String cid = rs.getString("CID");
+			ResultSet rs2 = JdbcUtil.selectSql("select * from t_student where sid='"+sid+"'");
+			while(rs2.next()) {
+				User u = new User();
+				u.setTel_number(rs2.getString("TEL_NUMBER"));
+				u.setName(rs2.getString("NAME"));
+				order.setOwner(u);
+			}
+			ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
+			while(rs3.next()) {
+				Worker w = new Worker();
+				w.setWname(rs3.getString("WNAME"));
+				w.setWnumber(rs3.getString("WNUMBER"));
+				order.setWorker(w);
+			}
+			ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+			while(rs4.next()) {
+				Category c = new Category();
+				c.setCname(rs4.getString("CNAME"));
+				order.setCategory(c);
+			}
+			order.setOid(rs.getString("OID"));
+			order.setStatus(rs.getInt("STATUS")); 
+			order.setOrdertime(rs.getString("ORDERTIME"));
+			order.setAddress(rs.getString("ADDRESS"));
+			order.setOrdermsg(rs.getString("ORDERMSG"));
+			list.add(order);
 		}
-		ResultSet rs3 = JdbcUtil.selectSql("select * from t_worker where wid='"+wid+"'");
-		while(rs3.next()) {
-			Worker w = new Worker();
-			w.setWname(rs3.getString("WNAME"));
-			w.setWnumber(rs3.getString("WNUMBER"));
-			order.setWorker(w);
-		}
-		ResultSet rs4 = JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
-		while(rs4.next()) {
-			Category c = new Category();
-			c.setCname(rs4.getString("CNAME"));
-			order.setCategory(c);
-		}
-		return order;
-	
-    }
+		JdbcUtil.freeAll();
+		return list;
+	}
 }

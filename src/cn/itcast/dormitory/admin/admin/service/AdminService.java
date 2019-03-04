@@ -11,7 +11,7 @@ import cn.itcast.dormitory.admin.admin.entity.Admin;
  *
  */
 public class AdminService {
-        public boolean login(Admin admin) {
+        public boolean login(Admin admin) throws SQLException {
         	AdminDao ad = new  AdminDao();
         	return ad.login(admin.getAdminid(), admin.getPassword());
         }

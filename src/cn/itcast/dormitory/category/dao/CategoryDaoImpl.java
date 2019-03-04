@@ -145,7 +145,17 @@ public class CategoryDaoImpl implements CategoryDao{
 			JdbcUtil.addUpdDel(sql);
 			JdbcUtil.freeAll();
 		}
-	
+	public Category load(String cid) throws SQLException {
+		JdbcUtil.getConnection();
+		Category category = new Category();
+		ResultSet rs =JdbcUtil.selectSql("select * from t_category where cid='"+cid+"'");
+		while(rs.next()) {
+			category.setCid(cid);
+			category.setCname(rs.getString("cname"));
+		}
+		return category;
+		
+	}
 	}
 
 

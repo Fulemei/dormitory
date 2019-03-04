@@ -97,9 +97,28 @@ public class OrderServlet {
 		req.setAttribute("msg", "您的订单已取消，您不后悔吗！");
 		return "f:/jsps/msg.jsp";		
 	}
-	
 	/**
-	 * 确认收货
+	  * 维修登记
+	 */
+	public String Dengji(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String oid = req.getParameter("oid");
+		/*
+		 * 校验订单状态
+		 */
+		int status = orderService.findStatus(oid);
+		if(status !=0) {
+			req.setAttribute("code", "error");
+			req.setAttribute("msg", "该订单已取消或已完成！");
+			return "f:/jsps/msg.jsp";
+		}
+		orderService.updateStatus(oid, 2);
+		req.setAttribute("code", "success");
+		req.setAttribute("msg", "工作人员已上门维修！");
+		return "f:/jsps/msg.jsp";	
+	}
+	/**
+	  *  维修成功
 	 * @param req
 	 * @param resp
 	 * @return
@@ -114,9 +133,9 @@ public class OrderServlet {
 		 */
 		int status = orderService.findStatus(oid);
 		
-		orderService.updateStatus(oid, 2);//设置状态为交易成功！
+		orderService.updateStatus(oid, 3);//设置状态为交易成功！
 		req.setAttribute("code", "success");
-		req.setAttribute("msg", "恭喜，交易成功！");
+		req.setAttribute("msg", "维修完成！");
 		return "f:/jsps/msg.jsp";		
 	}
 	

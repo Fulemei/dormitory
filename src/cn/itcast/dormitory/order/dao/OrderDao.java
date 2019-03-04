@@ -14,4 +14,5 @@ public interface OrderDao {
 	public List<Order> findAll() throws SQLException;//查询所有订单 
 	public List<Order> findByWorker(String wid) throws SQLException;//通过维修师傅查找订单
 	public List<Order> findByStatus(int status) throws SQLException;//通过订单状态查询
+	public List<Order> findByDorimtory(String dor) throws SQLException;
 }

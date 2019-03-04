@@ -326,6 +326,25 @@ public class UserServlet extends BaseServlet {
 	 */
 	private Map<String,String> validateLogin(User formUser, HttpSession session) {
 		Map<String,String> errors = new HashMap<String,String>();
+		/*
+		 * 1. 校验登录名
+		 */
+		String sid = formUser.getSid();
+		if(sid == null || sid.trim().isEmpty()) {
+			errors.put("loginname", "用户名不能为空！");
+		} else if(sid.length() < 3 || sid.length() > 20) {
+			errors.put("loginname", "用户名长度必须在3~20之间！");
+		} 
+		
+		/*
+		 * 2. 校验登录密码
+		 */
+		String password = formUser.getPassword();
+		if(password == null || password.trim().isEmpty()) {
+			errors.put("loginpass", "密码不能为空！");
+		} else if(password.length() < 3 || password.length() > 20) {
+			errors.put("loginpass", "密码长度必须在3~20之间！");
+		}
 		return errors;
 	}
 }

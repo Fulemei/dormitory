@@ -15,5 +15,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/ojdbc14.jar"/>
 	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/itcast-tools-1.4.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/activation.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="E:/eclipse workspace/dormitory/WebContent/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -14,10 +14,10 @@ public class SendEmail extends HttpServlet{
             throws ServletException, IOException
   {
       // 收件人的电子邮件 ID
-      String to = "abcd@gmail.com";
+      String to = "804718591@qq.com";
  
       // 发件人的电子邮件 ID
-      String from = "web@gmail.com";
+      String from = "fulm@zjhcsoft.com";
  
       // 假设您是从本地主机发送电子邮件
       String host = "localhost";

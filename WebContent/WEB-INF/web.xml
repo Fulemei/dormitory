@@ -11,12 +11,16 @@
   </filter-mapping>
   <servlet>
   <servlet-name>UserServlet</servlet-name>
-  <servlet-class>cn.itcast.dormitory.UserServlet</servlet-class>
+  <servlet-class>cn.itcast.dormitory.user.servletUserServlet</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>UserServlet</servlet-name>
   <url-pattern>/UserServlet</url-pattern>
 </servlet-mapping>
+ <servlet>
+  <servlet-name>AdminServlet</servlet-name>
+  <servlet-class>cn.itcast.dormitory.admin.admin.servlet.AdminServlet</servlet-class>
+</servlet>
   <servlet>
      <servlet-name>SendEmail</servlet-name>
      <servlet-class>SendEmail</servlet-class>
@@ -29,7 +33,7 @@
   <welcome-file-list>
     <welcome-file>login.html</welcome-file>
     <welcome-file>login.htm</welcome-file>
-    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>

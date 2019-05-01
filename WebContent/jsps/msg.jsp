@@ -59,7 +59,7 @@ a:hover {color:#FF6600; text-decoration: underline;}
   <c:choose>
   	<c:when test="${code eq 'success' }"><%--如果code是功能，它显示对号图片 --%>
   		<c:set var="img" value="/images/duihao.jpg"/>
-  		<c:set var="title" value="成功"/>
+  		<c:set var="title" value="成功"/> 
   	</c:when>
   	<c:when test="${code eq 'error' }"><%--如果code是功能，它显示错号图片 --%>
   		<c:set var="img" value="/images/cuohao.png"/>
@@ -68,9 +68,7 @@ a:hover {color:#FF6600; text-decoration: underline;}
   	
   </c:choose>
 <div class="divBody">
-	<div class="divTitle">
-		<span class="spanTitle">${title }</span>
-	</div>
+
 	<div class="divContent">
 	  <div style="margin: 60px;">
 		<img style="float: left; margin-right: 60px;" src="<c:url value='${img }'/>" width="150"/>
@@ -79,7 +77,7 @@ a:hover {color:#FF6600; text-decoration: underline;}
 		<br/>
 		<br/>
 		<br/>
-		<span style="margin-cente: 50px;"><a target="_top" href="<c:url value='/jsps/user/login.jsp'/>">我是学生</a></span>
+		<span style="margin-right: 50px;"><a target="_top" href="<c:url value='/jsps/user/login.jsp'/>">我是学生</a></span>
 		<span style="margin-left: 50px;"><a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">我是管理员</a></span>
 	  </div>
 	</div>

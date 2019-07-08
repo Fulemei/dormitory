@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>校园报修系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="./css/pintuer.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/pintuer.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+					//校验注册
+					$("#form2").validate({
+						submitHandler: function(form) {
+							// 执行提交
+							var postUrl = "UserServlet" ;
+							var param = $("#form2").serialize();
+							// 提交异步请求
+							$.post(postUrl,param,function(data){
+								if(data.state){
+									//执行跳转
+									layer.msg("注册成功~");
+									window.location.href="login.html";
+								}else{
+									layer.msg(data.msg);
+								}
+							},"json");
+						}
+					});
+				});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="tab">
+			<div class="tab-body tab-body-bordered">
+				<img src="./img/titleImg.jpg" class="img-responsive titleImg">
+				<div class="tab-panel active" id="userLogin">
+					<form id="form2" method="post" class="form form-auto">
+					<input type="hidden" name="method" value="regist"/>
+								<div class="form-group">
+									<div class="label">
+										<label for="username"> 学号</label>
+									</div>
+									<div class="field">
+										<input type="text" class="input" id="sid" name="sid" data-validate="required:必填" placeholder="学号"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label">
+										<label for="password"> 密码</label>
+									</div>
+									<div class="field">
+										<input type="password" class="input" id="password" name="password" data-validate="required:必填" placeholder="请输入密码"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label">
+										<label for="passwordRe"> 再次输入密码</label>
+									</div>
+									<div class="field">
+										<input type="password" class="input" id="repass" name="repass" data-validate="required:必填,repeat#repass:两次输入的密码不一致" placeholder="请再输入密码" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label">
+										<label for="username"> 姓名</label>
+									</div>
+									<div class="field">
+										<input type="text" class="input" id="loginname" name="loginname" data-validate="required:必填" placeholder="你的真实姓名"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label">
+										<label for="sex"> 性别</label>
+									</div>
+									<div class="field">
+										<div class="button-group radio">
+										<label class="button"> <input name="sex" value="1" type="radio"> 男 </label>
+										<label class="button"> <input name="sex" value="0" type="radio"> 女 </label>
+										</div>
+									</div>
+								</div>
+									<div class="form-group">
+									<div class="label">
+										<label for="classes"> 班级</label>
+									</div>
+									<div class="field">
+										<input type="text" class="input" id="classes" name="classes" data-validate="required:必填" placeholder="你正确的班级"/>
+									</div>
+								</div>
+									<div class="form-group">
+									<div class="label">
+										<label for="dormitory"> 寝室号</label>
+									</div>
+									<div class="field">
+										<input type="text" class="input" id="dormitory" name="dormitory" data-validate="required:必填 ,dormitory:请输入正确的寝室号" placeholder="例：五舍611请填写为 五舍0611"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="label">
+										<label for="mobile"> 手机</label>
+									</div>
+									<div class="field">
+										<input type="text" class="input" id="tel_number" name="tel_number" data-validate="required:必填,mobile:请输入正确手机号码" placeholder="你的手机号码"/>
+									</div>
+								</div>
+								<div class="form-button ">
+									<button class="button border-sub regBtn" name="reg" type="submit">注册</button>
+								</div>
+							</form>
+					
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+	<script>
+	$(function(){
+		$(window).resize();
+	});
+	$(window).resize(function(){
+		$(".tab").css({
+			position: "absolute",
+			left: ($(window).width() - $(".tab").outerWidth())/2,
+			top: ($(window).height() - $(".tab").outerHeight())/2
+		});
+	});
+	</script>
+</body>
+</html>

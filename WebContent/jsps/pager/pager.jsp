@@ -92,6 +92,6 @@
     <span>到</span>
     <input type="text" class="inputPageCode" id="pageCode" value="${pb.pc }"/>
     <span>页</span>
-    <a href="javascript:_go();" class="aSubmit">确定</a>
+    <a href="javascript:_go(); " style="border:1px;padding:1px 4px 1px 4px;" width="35.27;" height="20.17" class="aSubmit">确定</a>
   </div>
 </div>

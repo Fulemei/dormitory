@@ -1,29 +1,30 @@
 package cn.itcast.dormitory.worker.service;
 
 import java.sql.SQLException;
-import java.util.List;
 
+import cn.itcast.dormitory.pager.PageBean;
 import cn.itcast.dormitory.worker.dao.WorkerDao;
 import cn.itcast.dormitory.worker.dao.WorkerDaoImpl;
 import cn.itcast.dormitory.worker.entity.Worker;
 
-public class WorkerServiceImpl implements WorkerService{
+public class WorkerServiceImpl implements WorkerService {
 	WorkerDao wd = new WorkerDaoImpl();
+
 	@Override
-	public void delete(String wid) {
-		wd.delete(wid);
-		
+	public boolean delete(String wid) {
+		return wd.delete(wid);
+
 	}
 
 	@Override
-	public void edit(Worker worker) {
-		wd.edit(worker);
-		
+	public boolean edit(Worker worker) {
+		return wd.edit(worker);
+
 	}
 
 	@Override
-	public List<Worker> findByWid(String wid) throws SQLException {
-		return wd.findByWid(wid);
+	public PageBean<Worker> findByWid(String wid, int pc) throws SQLException {
+		return wd.findByWid(wid, pc);
 	}
 
 	@Override
@@ -32,18 +33,28 @@ public class WorkerServiceImpl implements WorkerService{
 	}
 
 	@Override
-	public List<Worker> findByCategory(String cid) throws SQLException {
-		return wd.findByCategory(cid);
+	public PageBean<Worker> findByCategory(String cid, int pc) throws SQLException {
+		return wd.findByCategory(cid, pc);
 	}
 
 	@Override
-	public List<Worker> findAll() throws SQLException {
-		return wd.findAll();
+	public PageBean<Worker> findAll(int pc) throws SQLException {
+		return wd.findAll(pc);
 	}
 
 	@Override
-	public void add(Worker worker) {
-		wd.add(worker);
+	public boolean add(Worker worker) {
+		return wd.add(worker);
+	}
+
+	@Override
+	public boolean checkWid(String wid) {
+		return wd.checkWid(wid);
+	}
+
+	@Override
+	public boolean ajaxValidateEmail(String email) {
+		return wd.ajaxValidateEmail(email);
 	}
 
 }
